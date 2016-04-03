@@ -4,6 +4,32 @@ Author: arnoldmanzano
 
 ![Travis CI status](https://travis-ci.org/arnoldmanzano/airport_challenge.svg?branch=master)
 
+##### Installation and Usage Instructions #####
+```sh
+$ git clone <repo_address>
+$ irb
+2.2.3 :001 > require './lib/airport'
+ => true
+2.2.3 :002 > airport = Airport.new
+ => #<Airport:0x007f9e81011180 @planes=[], @weather=#<Weather:0x007f9e81011158>, @capacity=10>
+2.2.3 :003 > plane1 = Plane.new
+ => #<Plane:0x007f9e812150f8 @landed=false>
+2.2.3 :004 > plane2 = Plane.new
+ => #<Plane:0x007f9e8120d3a8 @landed=false>
+2.2.3 :005 > airport.land(plane1)
+ => [#<Plane:0x007f9e812150f8 @landed=true>]
+2.2.3 :006 > airport.planes
+ => [#<Plane:0x007f9e812150f8 @landed=true>]
+2.2.3 :007 > airport.land(plane2)
+RuntimeError: Cannot land on a storm! Try again!
+2.2.3 :008 > airport.take_off(plane1)
+ => #<Plane:0x007f9e812150f8 @landed=false>
+2.2.3 :009 > airport.planes
+ => []
+```
+
+##### Design Approach #####
+
 To model the user stories in OOP, the main nouns are implemented as classes and the verb interactions between them are the methods. Classes and methods are written using test-first TDD approach.
 
 Airport is a class, and Plane is a class.
@@ -48,25 +74,25 @@ Task
 We have a request from a client to write the software to control the flow of planes at an airport. The planes can land and take off provided that the weather is sunny. Occasionally it may be stormy, in which case no planes can land or take off.  Here are the user stories that we worked out in collaboration with the client:
 
 ```
-As an air traffic controller 
-So I can get passengers to a destination 
-I want to instruct a plane to land at an airport and confirm that it has landed 
+As an air traffic controller
+So I can get passengers to a destination
+I want to instruct a plane to land at an airport and confirm that it has landed
 
-As an air traffic controller 
-So I can get passengers on the way to their destination 
+As an air traffic controller
+So I can get passengers on the way to their destination
 I want to instruct a plane to take off from an airport and confirm that it is no longer in the airport
 
-As an air traffic controller 
-To ensure safety 
-I want to prevent takeoff when weather is stormy 
+As an air traffic controller
+To ensure safety
+I want to prevent takeoff when weather is stormy
 
-As an air traffic controller 
-To ensure safety 
-I want to prevent landing when weather is stormy 
+As an air traffic controller
+To ensure safety
+I want to prevent landing when weather is stormy
 
-As an air traffic controller 
-To ensure safety 
-I want to prevent landing when the airport is full 
+As an air traffic controller
+To ensure safety
+I want to prevent landing when the airport is full
 
 As the system designer
 So that the software can be used for many different airports
@@ -85,7 +111,7 @@ In code review we'll be hoping to see:
 
 * All tests passing
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
-* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
 
