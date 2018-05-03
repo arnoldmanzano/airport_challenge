@@ -1,6 +1,7 @@
 ﻿Airport Challenge Author README
 =================
 Author: arnoldmanzano / arnold.manzano@gmail.com
+Date: 
 
 ![Travis CI status](https://travis-ci.org/arnoldmanzano/airport_challenge.svg?branch=master)
 
